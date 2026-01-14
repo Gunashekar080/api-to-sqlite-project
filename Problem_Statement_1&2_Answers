@@ -1,0 +1,102 @@
+"""
+Problem Statement - assignment 1
+
+Github Link : https://github.com/Gunashekar080/api-to-sqlite-project
+
+
+Problem Statement - assignment 2
+
+Q1) Ratings
+
+LLM - A
+Deep Learning - B
+AI - A
+ML - A
+
+
+Q2) High-Level Architecture of an LLM Chatbot
+
+The modern approach to building LLM apps is to treat the LLM as a reasoning engine, not a database.
+
+Key Components:
+
+1. The Orchestrator:
+   This is the central application logic (often built using frameworks like LangChain or LlamaIndex).
+   It receives the user's message, decides what tools to use, and manages the flow of data between
+   the database and the LLM.
+
+2. The Embedding Model:
+   Before the system can read your data, it must convert text into numbers (vectors).
+   Models like OpenAI's text-embedding-3 or open-source equivalents do this.
+
+3. Vector Database:
+   This stores your private data (PDFs, company docs, product info) as mathematical vectors.
+   It allows the chatbot to look up relevant information based on meaning, not just keywords.
+
+4. LLM:
+   The model itself (e.g., GPT-4, Claude, or Llama 2). It takes the user's question and the relevant
+   data fetched from the vector database and generates a human-like answer.
+
+5. Conversation Memory:
+   A standard database (like Redis or SQL) that stores the last few exchanges of the chat so the bot
+   remembers what you just said.
+
+
+High-Level Flow (RAG)
+
+1. Ingestion:
+   You upload a document (e.g., Company Policy.pdf). The system chunks it into paragraphs, converts
+   them into vectors using the embedding model, and saves them in the vector database.
+
+2. Retrieval:
+   The user asks, "What is the policy on remote work?" The system converts this question into a
+   vector and searches the vector database for the most similar chunks of text.
+
+3. Generation:
+   The system sends a prompt to the LLM using the retrieved policy chunks.
+
+4. Response:
+   The LLM generates the answer using only the facts provided.
+
+
+Q3) Vector Databases
+
+A vector database is a specialized database designed to store, manage, and search embeddings.
+Computers cannot understand the meaning of text; they only understand numbers. An embedding is a
+long list of numbers (a vector) that represents the semantic meaning of a piece of text.
+
+
+Hypothetical Problem & Selection
+
+The Problem: Rapid-Scale Customer Support Bot
+
+Scenario:
+I’m the CTO of a fast-growing e-commerce startup.
+
+Goal:
+Build a chatbot that answers customer questions about 5,000+ products and shipping policies.
+
+Traffic:
+Spiky (huge traffic during Black Friday, low traffic otherwise).
+
+Team:
+Small engineering team (3 developers), very little DevOps experience.
+
+Requirement:
+Must be live in 2 weeks.
+
+
+The Selection: Pinecone
+
+If I were to select a vector database for this specific problem, I would choose Pinecone.
+
+1. Fully Managed (Serverless):
+   Pinecone is a Database-as-a-Service. You do not need to provision servers, manage shards, or worry
+   about scaling clusters.
+
+2. Scalability:
+   It handles the Black Friday problem natively and scales automatically.
+
+3. Developer Experience:
+   It integrates easily with LangChain and OpenAI and provides a simple API for rapid development.
+"""
